@@ -1,0 +1,176 @@
+﻿
+@{
+    ViewData["Title"] = "Movie World";
+}
+
+       
+       <!-- BANNER -->
+       <section class="banner" aria-label="popular movies">
+
+            <div class="banner-slider">
+
+            @foreach (var item in ViewBag.trending)
+            {
+                     <div class="slider-item" slider-item>
+                                 <img src="http://image.tmdb.org/t/p/w1280\@item.backdrop_path" alt="@item.title" loading="eager" class="img-cover">
+
+                        <div class="banner-content">
+                            <h2 class="heading">
+                                @item.title
+                            </h2>
+                            <div class="meta-list">
+                                     <div class="meta-item">@item.release_date</div>
+                                <div class="meta-item card-badge">@string.Format("{0:n1}", item.vote_average)</div>
+                            </div>
+                            <p class="genre">
+                            @{
+                                string a = "";
+                            }
+                            @foreach (var genreid in item.genre_ids)
+                            {
+                                @foreach (var genre in ViewBag.genres)
+                                {
+                                    if (genre.id == genreid)
+                                    {
+                                    a = genreid + ",";
+                                    @(String.Format("{0}, ", @genre.name))
+                                    }
+                                }
+                            }
+                            </p>
+
+                            <p class="banner-text">@item.overview</p>
+
+                                <a asp-action="Detail" asp-route-id="@item.id" class="btn">
+                                <img src="~/img/play_circle.png" width="24" height="24" aria-hidden="true" alt="play_circle">
+
+                                <span class="span">Watch Now</span>
+                            </a>
+                        </div>
+                    </div>     
+            }
+
+            </div>
+
+            <div class="slider-control">
+                <div class="control-inner">
+
+                        
+                @foreach (var item in ViewBag.trending)
+                {
+                    <button class="poster-box slider-item btn-slider" slider-control>
+                              <img src="http://image.tmdb.org/t/p/w154\@item.poster_path" alt="@item.title" loading="lazy" draggable="false" class="img-cover">
+                    </button>              
+
+                }
+
+                </div>
+            </div>
+
+       </section>
+
+       <section class="movie-list" aria-label="upcoming movie">
+
+            <div class="title-wrapper">
+                <h3 class="title-large">Upcoming Movies</h3>
+            </div>
+
+            <div class="slider-list">
+                    <div class="slider-inner">
+                @foreach (var item in ViewBag.upcoming)
+                {
+                        <div class="movie-card">
+                            <figure class="poster-box card-banner">
+                                        <img src="http://image.tmdb.org/t/p/w154\@item.poster_path" alt=" @item.title" class="img-cover">
+                            </figure>
+
+                                <h4 class="title">@item.title</h4>
+
+                            <div class="meta-list">
+                                <div class="meta-item">
+                                    <img src="~/img/star.png" width="20" height="20" loading="lazy" alt="rating">
+                                    <span class="span">@string.Format("{0:n1}", item.vote_average)</span>
+                                </div>
+
+                                 <div class="card-badge">@item.release_date</div>
+                            </div>
+
+                                <a asp-action="Detail" asp-route-id="@item.id" class="card-btn" title=" Puss in Boots: The Last Wish"></a>
+                        </div>
+                }
+                    </div>
+                </div>
+
+       </section>
+
+       <section class="movie-list" aria-label="upcoming movie">
+
+            <div class="title-wrapper">
+                <h3 class="title-large">Popular Movies</h3>
+            </div>
+
+            <div class="slider-list">
+                    <div class="slider-inner">
+                @foreach (var item in ViewBag.popular)
+                {
+                            <div class="movie-card">
+                                <figure class="poster-box card-banner">
+                                            <img src="http://image.tmdb.org/t/p/w154\@item.poster_path" alt="@item.title" class="img-cover">
+                                </figure>
+
+                                    <h4 class="title">@item.title</h4>
+
+                                <div class="meta-list">
+                                    <div class="meta-item">
+                                        <img src="~/img/star.png" width="20" height="20" loading="lazy" alt="rating">
+                                        <span class="span">@string.Format("{0:n1}", item.vote_average)</span>
+                                    </div>
+
+                                     <div class="card-badge">@item.release_date</div>
+                                </div>
+
+                                    <a asp-action="Detail" asp-route-id="@item.id" class="card-btn" title=" Puss in Boots: The Last Wish"></a>
+                            </div>
+                }
+                    </div>
+                </div>
+
+       </section>
+
+       <section class="movie-list" aria-label="upcoming movie">
+
+            <div class="title-wrapper">
+                <h3 class="title-large">Top Rated Movies</h3>
+            </div>
+
+            <div class="slider-list">
+                    <div class="slider-inner">
+                @foreach (var item in ViewBag.toprated)
+                {
+                            <div class="movie-card">
+                                <figure class="poster-box card-banner">
+                                            <img src="http://image.tmdb.org/t/p/w154\@item.poster_path" alt="@item.title" class="img-cover">
+                                </figure>
+
+                                    <h4 class="title">@item.title</h4>
+
+                                <div class="meta-list">
+                                    <div class="meta-item">
+                                        <img src="~/img/star.png" width="20" height="20" loading="lazy" alt="rating">
+                                        <span class="span">@string.Format("{0:n1}", item.vote_average)</span>
+                                    </div>
+
+                                     <div class="card-badge">@item.release_date</div>
+                                </div>
+
+                                    <a asp-action="Detail" asp-route-id="@item.id" class="card-btn" title=" Puss in Boots: The Last Wish"></a>
+                            </div>
+                }
+                    </div>
+                </div>
+
+       </section>
+
+
+    
+

@@ -1,0 +1,68 @@
+﻿@model PaginatedList<MovieApp.Models.Result>
+@{
+    ViewData["Title"] = "MovieList";
+}
+
+
+<section class="movie-list genre-list">
+
+            <div class="title-wrapper">
+                <h3 class="heading">All Fantasy Movies</h3>
+            </div>
+
+            <div class="grid-list">
+
+                    @foreach(var item in Model){
+                    
+                             <div class="movie-card">
+                                    <figure class="poster-box card-banner">
+                                                <img src="http://image.tmdb.org/t/p/w154\@item.poster_path" alt=" @item.title" class="img-cover">
+                                    </figure>
+
+                                        <h4 class="title">@item.title</h4>
+
+                                    <div class="meta-list">
+                                        <div class="meta-item">
+                                            <img src="~/img/star.png" width="20" height="20" loading="lazy" alt="rating">
+                                            <span class="span">@string.Format("{0:n1}", item.vote_average)</span>
+                                        </div>
+
+                                         <div class="card-badge">@item.release_date</div>
+                                    </div>
+
+                                        <a asp-action="Detail" asp-route-id="@item.id" class="card-btn" title=" Puss in Boots: The Last Wish"></a>
+                                </div>
+                    }
+
+            </div>
+
+
+       </section>
+
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disable" : "";
+    var nextDisabled = !Model.HasNextPage ? "disable" : "";
+}
+
+<div class="btn-wrapper">
+    <a asp-action="MovieList"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   class="btn @prevDisabled">
+    Previous
+    </a>
+
+    <span style="margin-inline: 10px;
+    padding: 5px 15px;
+    background-color: #707070;
+    border-radius: var(--radius-4);">@Model.PageIndex</span>
+
+    <a asp-action="MovieList"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   class="btn @nextDisabled">
+    Next
+    </a>
+</div>
+
+
+
