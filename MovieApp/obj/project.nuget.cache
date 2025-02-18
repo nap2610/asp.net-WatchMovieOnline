@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lgtw9CW/LxPZ31Nrc/aDhDbxPHcm/hw5ehS7P9vtDjUUrSsLooRiAnsdgocQ7Mpuo0uZbjgG/6sytxrQs1kpzQ==",
+  "dgSpecHash": "0F8Q+RtDVm8=",
   "success": true,
-  "projectFilePath": "D:\\dev\\MyProject\\C#\\MovieApp\\MovieApp\\MovieApp.csproj",
+  "projectFilePath": "D:\\01-Code\\01-Code-Projects\\02-Code-Project-C#\\movie_app\\MovieApp\\MovieApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Phu\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\Phu\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

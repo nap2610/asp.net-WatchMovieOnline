@@ -1,60 +1,59 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Detail";
 }
 
-    <div class="movie-detail">
-            <div class="backdrop-image" style="background-image: url('http://image.tmdb.org/t/p/w1280\@ViewBag.detail.backdrop_path');"></div>
+<div class="movie-detail">
+    <div class="backdrop-image" style="background-image: url('http://image.tmdb.org/t/p/w1280\@ViewBag.detail.backdrop_path');"></div>
 
-            <figure class="poster-box movie-poster">
-                <img src="http://image.tmdb.org/t/p/w780\@ViewBag.detail.poster_path" alt="Puss in Boots: The Last Wish" class="img-cover">
-            </figure>
+    <figure class="poster-box movie-poster">
+        <img src="http://image.tmdb.org/t/p/w780\@ViewBag.detail.poster_path" alt="Puss in Boots: The Last Wish" class="img-cover">
+    </figure>
 
-            <div class="detail-box">
-                <div class="detail-content">
-                    <h1 class="heading">@ViewBag.detail.title</h1>
+    <div class="detail-box">
+        <div class="detail-content">
+            <h1 class="heading">@ViewBag.detail.title</h1>
 
-                    <div class="meta-list">
-                        <div class="meta-item">
-                            <img src="~/img/star.png" alt="rating" width="20" height="20">
+            <div class="meta-list">
+                <div class="meta-item">
+                    <img src="~/img/star.png" alt="rating" width="20" height="20">
 
-                            <span class="span">@string.Format("{0:n1}", @ViewBag.detail.vote_average)</span>
-                        </div>
+                    <span class="span">@string.Format("{0:n1}", @ViewBag.detail.vote_average)</span>
+                </div>
 
-                        <div class="separator"></div>
+                <div class="separator"></div>
 
-                        <div class="meta-item">@string.Format("{0:#,,}M", @ViewBag.detail.revenue)$</div>
+                <div class="meta-item">@string.Format("{0:#,,}M", @ViewBag.detail.revenue)$</div>
 
-                        <div class="separator"></div>
+                <div class="separator"></div>
 
-                        <div class="meta-item">@ViewBag.detail.release_date</div>
+                <div class="meta-item">@ViewBag.detail.release_date</div>
 
-                        <div class="meta-item card-badge">@ViewBag.detail.status</div>
+                <div class="meta-item card-badge">@ViewBag.detail.status</div>
 
-                    </div>
+            </div>
 
-                    <p class="genre">
-                        @foreach (var genreid in ViewBag.detail.genres)
+            <p class="genre">
+                @foreach (var genreid in ViewBag.detail.genres)
+                {
+                    @foreach (var genre in @ViewBag.genres)
+                    {
+                        if (genre.id == genreid.id)
                         {
-                            @foreach (var genre in @ViewBag.genres)
-                            {
-                                if (genre.id == genreid.id)
-                                {
-                                    @(String.Format("{0}, ", @genre.name))
-                                }
-                            }
+                            @(String.Format("{0}, ", @genre.name))
                         }
-                    </p>
+                    }
+                }
+            </p>
 
-                    <p class="overview">
-                        @ViewBag.detail.overview
-                    </p>
+            <p class="overview">
+                @ViewBag.detail.overview
+            </p>
 
-                    <ul class="detail-list">
-                        <div class="list-item">
-                            <p class="list-name">Starring</p>
+            <ul class="detail-list">
+                <div class="list-item">
+                    <p class="list-name">Starring</p>
 
-                            <p>
+                    <p>
                         @foreach (var castItem in ViewBag.detail.casts.cast)
                         {
                             if (castItem.known_for_department == "Acting")
@@ -63,12 +62,12 @@
                             }
                         }
                     </p>
-                        </div>
+                </div>
 
-                        <div class="list-item">
-                            <p class="list-name">Directed By</p>
+                <div class="list-item">
+                    <p class="list-name">Directed By</p>
 
-                            <p>
+                    <p>
                         @foreach (var crewItem in ViewBag.detail.casts.crew)
                         {
                             if (crewItem.known_for_department == "Directing")
@@ -77,65 +76,65 @@
                             }
                         }
                     </p>
-                        </div>
-                    </ul>
-
                 </div>
+            </ul>
 
-                <div class="title-wrapper">
-                    <h3 class="title-large">Trailers and Clips</h3>
-                </div>
+        </div>
 
-                <div class="slider-list">
-                    <div class="slider-inner">
+        <div class="title-wrapper">
+            <h3 class="title-large">Trailers and Clips</h3>
+        </div>
+
+        <div class="slider-list">
+            <div class="slider-inner">
 
                 @foreach (var videoItem in ViewBag.detail.videos.results)
-                        {
-                            <div class="video-card">
-                                    <iframe width="400" height="295" src="https://www.youtube.com/embed/\@videoItem.key\?&theme=dark&color=white&rel=0" 
+                {
+                    <div class="video-card">
+                        <iframe width="400" height="295" src="https://www.youtube.com/embed/\@videoItem.key\?&theme=dark&color=white&rel=0"
                                 title="@videoItem.name" frameborder="0" loading="lazy" class="img-cover" allowfullscreen="1">
-                                </iframe>
-                           </div>
-                        }
-
+                        </iframe>
                     </div>
-                </div>
+                }
+
             </div>
         </div>
+    </div>
+</div>
 
 
-        <!-- MOVIE LIST -->
-       <section class="movie-list" aria-label="upcoming movie">
+<!-- MOVIE LIST -->
+<section class="movie-list" aria-label="upcoming movie">
 
-            <div class="title-wrapper">
-                <h3 class="title-large">You May Also Like</h3>
-            </div>
+    <div class="title-wrapper">
+        <h3 class="title-large">You May Also Like</h3>
+    </div>
 
-            <div class="slider-list">
-                <div class="slider-inner">
+    <div class="slider-list">
+        <div class="slider-inner">
             @foreach (var item in ViewBag.similar)
             {
-                    <div class="movie-card">
-                                <figure class="poster-box card-banner">
-                                            <img src="http://image.tmdb.org/t/p/w154\@item.poster_path" alt=" @item.title" class="img-cover">
-                                </figure>
+                <div class="movie-card">
+                    <figure class="poster-box card-banner">
+                        <img src="http://image.tmdb.org/t/p/w154\@item.poster_path" alt=" @item.title" class="img-cover">
+                    </figure>
 
-                                    <h4 class="title">@item.title</h4>
+                    <h4 class="title">@item.title</h4>
 
-                                <div class="meta-list">
-                                    <div class="meta-item">
-                                        <img src="~/img/star.png" width="20" height="20" loading="lazy" alt="rating">
-                                        <span class="span">@string.Format("{0:n1}", item.vote_average)</span>
-                                    </div>
+                    <div class="meta-list">
+                        <div class="meta-item">
+                            <img src="~/img/star.png" width="20" height="20" loading="lazy" alt="rating">
+                            <span class="span">@string.Format("{0:n1}", item.vote_average)</span>
+                        </div>
 
-                                     <div class="card-badge">@item.release_date</div>
-                                </div>
+                        <div class="card-badge">@item.release_date</div>
+                    </div>
 
-                                    <a asp-action="Detail" asp-route-id="@item.id" class="card-btn" title=" Puss in Boots: The Last Wish"></a>
-                            </div>
+                    <a asp-action="Detail" asp-route-id="@item.id" class="card-btn" title=" Puss in Boots: The Last Wish"></a>
+                </div>
             }
         </div>
-            </div>
+    </div>
 
-       </section>
+</section>
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Rt18dvCPVM7OYB2+/AcaIO2JVhPhfUqMVz9w38WIUb0ZeN3RDzhAFKAbH7lc6HVHkcWH5aB7D+EUAMUBZQ7qEA==",
+  "dgSpecHash": "uFBOdePUvIQ=",
   "success": true,
-  "projectFilePath": "D:\\dev\\MyProject\\C#\\MovieApp\\MovieAPI\\MovieAPI.csproj",
+  "projectFilePath": "D:\\01-Code\\01-Code-Projects\\02-Code-Project-C#\\movie_app\\MovieAPI\\MovieAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Phu\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Phu\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
